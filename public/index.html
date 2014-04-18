@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>TicTacToe by: @Bamdad</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="/css/game.css" rel="stylesheet" media="screen">
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+    <script src="socket.io/socket.io.js"></script>
+
+
+    <script>
+        var socket = io.connect('http://localhost');
+        socket.emit('join');
+
+        socket.on('joined', function(player_details){
+            console.log('joined successfully!');
+            $('.pid').text(player_details.id);
+            $('.xo').text(player_details.xo);
+        })
+
+//        $.ready(function(){
+//            $('#place-1').click(function () {
+//                console.log('1');
+//            })
+//        });
+
+
+
+
+    </script>
+</head>
+<body>
+<div class="pid"></div>
+<div class="xo"></div>
+<div class="game">
+    <div class="row">
+        <div id="place-1" class="span1 place">1</div>
+        <div id="place-2" class="span1 place">2</div>
+        <div id="place-3" class="span1 place">3</div>
+    </div>
+    <div class="row">
+        <div id="place-4" class="span1 place">4</div>
+        <div id="place-5" class="span1 place">5</div>
+        <div id="place-6" class="span1 place">6</div>
+    </div>
+    <div class="row">
+        <div id="place-7" class="span1 place">7</div>
+        <div id="place-8" class="span1 place">8</div>
+        <div id="place-9" class="span1 place">9</div>
+    </div>
+</div>
+
+</body>
+</html>
+
