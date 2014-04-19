@@ -15,26 +15,52 @@
 
     <script>
         var socket = io.connect('http://localhost');
+        var player_id;
+        var player_xo;
         socket.emit('join');
 
         socket.on('joined', function(player_details){
             console.log('joined successfully!');
-            $('.pid').text(player_details.id);
-            $('.xo').text(player_details.xo);
+            player_id = player_details.id;
+            player_xo = player_details.xo;
+            $('.pid').text(player_id);
+            $('.xo').text(player_xo);
         })
 
-//        $.ready(function(){
-//            $('#place-1').click(function () {
-//                console.log('1');
-//            })
-//        });
+        socket.on('play', function(play){
+            console.log(play);
+            $("#place-"+play.place).text(play.player_xo);
 
-
+        })
 
 
     </script>
 </head>
 <body>
+<script>
+    $( document ).ready(function() {
+        var play = function(element,place){
+            $(element).click(function(){
+                socket.emit('play', {"player_id": player_id,
+                    "player_xo": player_xo,
+                    "place": place})
+            });
+        };
+
+        play('#place-1', 1);
+        play('#place-2', 2);
+        play('#place-3', 3);
+        play('#place-4', 4);
+        play('#place-5', 5);
+        play('#place-6', 6);
+        play('#place-7', 7);
+        play('#place-8', 8);
+        play('#place-9', 9);
+    });
+
+
+</script>
+<p></p>
 <div class="pid"></div>
 <div class="xo"></div>
 <div class="game">

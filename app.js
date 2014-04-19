@@ -22,6 +22,12 @@ io.sockets.on('connection', function (socket) {
         players++;
         socket.emit('joined', {"id": players, "xo": calcXo(players)});
     });
+
+    socket.on('play', function(data){
+       console.log(data)    ;
+       socket.broadcast.emit('play', data);
+       socket.emit('play', data);
+    });
 });
 
 function calcXo(players){
