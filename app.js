@@ -23,13 +23,19 @@ io.sockets.on('connection', function (socket) {
         socket.emit('joined', {"id": players, "xo": calcXo(players)});
     });
 
+
     socket.on('play', function(data){
-       console.log(data)    ;
+       console.log(data);
+       data.turn = calcTurn(data);
        socket.broadcast.emit('play', data);
        socket.emit('play', data);
     });
 });
 
 function calcXo(players){
-    return (players %2 ==0 )?"x":"o";
+    return (players %2 ==0 )?'x':'o';
+}
+
+function calcTurn(data) {
+    return (data.player_xo == 'x')? 'o': 'x';
 }

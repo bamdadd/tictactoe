@@ -17,6 +17,7 @@
         var socket = io.connect('http://localhost');
         var player_id;
         var player_xo;
+        var turn = 'x';
         socket.emit('join');
 
         socket.on('joined', function(player_details){
@@ -30,6 +31,15 @@
         socket.on('play', function(play){
             console.log(play);
             $("#place-"+play.place).text(play.player_xo);
+            turn = play.turn;
+
+            if (turn == player_xo){
+                $('.turn').text('Your turn');
+            } else
+            {
+                $('.turn').text('Your opponents turn');
+
+            }
 
         })
 
@@ -39,23 +49,22 @@
 <body>
 <script>
     $( document ).ready(function() {
-        var play = function(element,place){
+        var place = function(element,place){
             $(element).click(function(){
                 socket.emit('play', {"player_id": player_id,
                     "player_xo": player_xo,
                     "place": place})
             });
         };
-
-        play('#place-1', 1);
-        play('#place-2', 2);
-        play('#place-3', 3);
-        play('#place-4', 4);
-        play('#place-5', 5);
-        play('#place-6', 6);
-        play('#place-7', 7);
-        play('#place-8', 8);
-        play('#place-9', 9);
+        place('#place-1', 1);
+        place('#place-2', 2);
+        place('#place-3', 3);
+        place('#place-4', 4);
+        place('#place-5', 5);
+        place('#place-6', 6);
+        place('#place-7', 7);
+        place('#place-8', 8);
+        place('#place-9', 9);
     });
 
 
@@ -63,6 +72,8 @@
 <p></p>
 <div class="pid"></div>
 <div class="xo"></div>
+<div class="turn"></div>
+
 <div class="game">
     <div class="row">
         <div id="place-1" class="span1 place">1</div>
