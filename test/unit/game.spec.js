@@ -1,31 +1,30 @@
 describe("Game", function () {
     var game;
-    var players;
+    var gameState;
 
     beforeEach(function () {
-       players = jasmine.createSpyObj('players', ['x','o','next']);
+       gameState = jasmine.createSpyObj('gameState', ['turn', 'next']);
     });
 
     describe("Turn", function () {
 
         it("should be X who always starts", function () {
-            game = tictactoe.Game(players);
-            expect(game.turn).toEqual(players.x);
+            gameState.turn.and.returnValue('x');
+
+            game = tictactoe.Game(gameState);
+
+            expect(game.turn()).toEqual('x');
         });
 
         it("should set next player after each play", function () {
-            players.next.and.returnValue(players.o);
-            game = tictactoe.Game(players);
-            game.play();
-            expect(players.next).toHaveBeenCalled();
-            expect(players.next()).toEqual(players.o);
-        });
+            gameState.turn.and.returnValue('x');
+            gameState.next.and.returnValue('o');
 
-        it("should set next player after each play", function () {
-            game = tictactoe.Game(players);
-            game.play();
-            game.play();
-            expect(players.next.calls.count()).toEqual(2);
+            game = tictactoe.Game(gameState);
+            var nextPlayer =game.play();
+
+            expect(gameState.next).toHaveBeenCalled();
+            expect(nextPlayer).toEqual('o');
         });
 
 

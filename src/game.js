@@ -1,14 +1,13 @@
 var tictactoe = tictactoe || {};
 
-tictactoe.Game = function (players){
-    var current_turn = players.x;
+tictactoe.Game = function (gameState){
 
     function play(){
-        current_turn = players.next(current_turn);
+        return gameState.next();
     }
 
     return {
-        turn: current_turn,
+        turn: gameState.turn,
         play: play
     }
 }
