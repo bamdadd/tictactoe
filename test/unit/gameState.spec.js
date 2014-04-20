@@ -13,16 +13,9 @@ describe("GameState", function () {
             expect(gameState.turn()).toEqual(players.x);
         });
 
-//        it("should set next player after each play", function () {
-//            gameState.turn.and.returnValue('x');
-//            gameState.next.and.returnValue('o');
-//
-//            game = tictactoe.Game(gameState);
-//            var nextPlayer =game.play();
-//
-//            expect(gameState.next).toHaveBeenCalled();
-//            expect(nextPlayer).toEqual('o');
-//        });
+        it("should set the next player", function () {
+           expect(gameState.next()).toEqual(players.o);
+        });
 
 
     })

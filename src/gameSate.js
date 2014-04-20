@@ -6,8 +6,13 @@ tictactoe.GameState = function(players){
     function turn(){
         return current_turn;
     }
-    
+
+    function next(){
+        return (current_turn== players.x)? players.o: players.x;
+    }
+
     return {
-        turn: turn
+        turn: turn,
+        next: next
     }
 }
