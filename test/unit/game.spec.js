@@ -21,13 +21,12 @@ describe("Game", function () {
             expect(players.next()).toEqual(players.o);
         });
 
-//        it("should set next player after each play", function () {
-//            game = tictactoe.Game(players);
-//            game.play();
-//            game.play();
-////            expect(players.next.calls.count).toEqual(2);
-//            expect(game.call_counter).toEqual(2);
-//        });
+        it("should set next player after each play", function () {
+            game = tictactoe.Game(players);
+            game.play();
+            game.play();
+            expect(players.next.calls.count()).toEqual(2);
+        });
 
 
     })
