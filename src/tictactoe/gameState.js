@@ -12,7 +12,12 @@ tictactoe.GameState = function (players, playerOne, playerTwo) {
     }
 
     function join(){
-        playerOne.makeX();
+        if(!playerOne.isX()){
+            playerOne.makeX();
+        }
+        else if(!playerTwo.isO()){
+            playerTwo.makeO();
+        }
 
     }
 

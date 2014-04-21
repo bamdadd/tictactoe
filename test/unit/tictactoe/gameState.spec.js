@@ -6,18 +6,19 @@ describe("GameState", function () {
 
     beforeEach(function () {
         players = jasmine.createSpyObj('players', ['x', 'o']);
-        playerOne = jasmine.createSpyObj('playerOne', ['makeX']);
-        playerTwo = jasmine.createSpyObj('playerTwo', ['makeO']);
+        playerOne = jasmine.createSpyObj('playerOne', ['makeX','isX']);
+        playerTwo = jasmine.createSpyObj('playerTwo', ['makeO', 'isO']);
         gameState = tictactoe.GameState(players, playerOne, playerTwo);
     });
 
     describe('first player', function () {
 
         beforeEach(function(){
+           playerOne.isX.and.returnValue(false);
            gameState.join();
         });
 
-        it('should initialise the first player as X', function () {
+        it('should make the first player X', function () {
            expect(playerOne.makeX).toHaveBeenCalled();
         });
 
@@ -26,11 +27,11 @@ describe("GameState", function () {
     describe('second player', function () {
 
         beforeEach(function(){
-            gameState.join();
+            playerOne.isX.and.returnValue(true);
             gameState.join();
         });
 
-        it('should initialise the second player as O', function () {
+        it('should make the second player O', function () {
             expect(playerTwo.makeO).toHaveBeenCalled();
         });
 
