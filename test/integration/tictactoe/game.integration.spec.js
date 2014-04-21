@@ -19,8 +19,20 @@ describe('Game', function(){
         expect(playerOne.isX()).toBeTruthy;
         game.join();
         expect(playerTwo.isO()).toBeTruthy;
+    }) ;
+
+    it('should set the turn to x when it starts', function(){
+        game.join();
+        game.join();
+        expect(game.turn()).toEqual(players.x);
+    }) ;
 
 
+    it('should set the turn to o after x plays', function(){
+        game.join();
+        game.join();
+        game.play();
+        expect(game.turn()).toEqual(players.o);
     }) ;
 
 

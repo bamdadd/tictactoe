@@ -1,14 +1,16 @@
 var tictactoe = tictactoe || {};
 
 tictactoe.GameState = function (players, playerOne, playerTwo) {
-    var current_turn = players.x;
+    var currentTurn = players.x;
 
     function turn(){
-        return current_turn;
+        return currentTurn;
     }
 
     function next(){
-        return (current_turn== players.x)? players.o: players.x;
+        var nextTurn = (currentTurn == players.x) ? players.o : players.x;
+        currentTurn = nextTurn;
+        return  nextTurn;
     }
 
     function join(){
