@@ -23,6 +23,19 @@ describe("GameState", function () {
 
     });
 
+    describe('second player', function () {
+
+        beforeEach(function(){
+            gameState.join();
+            gameState.join();
+        });
+
+        it('should initialise the second player as O', function () {
+            expect(playerTwo.makeO).toHaveBeenCalled();
+        });
+
+    });
+
     describe("players", function () {
 
         it("should set the initial player to x", function () {
