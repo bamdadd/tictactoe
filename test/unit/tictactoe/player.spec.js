@@ -13,5 +13,10 @@ describe('Player', function(){
         expect(player.xo).toEqual(players.x);
     }) ;
 
+    it('should make a player o', function(){
+        player.makeO();
+        expect(player.xo).toEqual(players.o);
+    }) ;
+
 
 });
