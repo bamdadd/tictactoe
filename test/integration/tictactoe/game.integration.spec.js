@@ -42,6 +42,9 @@ describe('Game', function(){
         it('should play with a grid number', function(){
             game.play(1);
             expect(grid.getCell(1)).toEqual(playerOne);
+            game.play(2);
+            expect(grid.getCell(2)).toEqual(playerTwo);
+
         });
 
     })
