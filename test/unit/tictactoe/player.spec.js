@@ -18,5 +18,11 @@ describe('Player', function(){
         expect(player.xo).toEqual(players.o);
     }) ;
 
+    it('should check if a player is X', function(){
+       expect(player.isX()).toBeFalsy;
+       player.makeX();
+       expect(player.isX()).toBeTruthy;
+    });
+
 
 });

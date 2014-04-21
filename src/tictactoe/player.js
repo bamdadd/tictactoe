@@ -9,8 +9,17 @@ tictactoe.Player = function(players){
     function makeO(){
         this.xo = players.o;
     }
+    function isX(){
+        return this.xo == players.x;
+    }
+
+    function isO(){
+        return this.xo == players.o;
+    }
     return {
         xo: this.xo,
+        isX: isX,
+        isO: isO,
         makeX: makeX,
         makeO: makeO
 
