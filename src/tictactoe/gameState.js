@@ -1,6 +1,6 @@
 var tictactoe = tictactoe || {};
 
-tictactoe.GameState = function (players, player) {
+tictactoe.GameState = function (players, playerOne, playerTwo) {
     var current_turn = players.x;
 
     function turn(){
@@ -12,7 +12,8 @@ tictactoe.GameState = function (players, player) {
     }
 
     function join(){
-        return player();
+        playerOne.makeX();
+
     }
 
     return {
