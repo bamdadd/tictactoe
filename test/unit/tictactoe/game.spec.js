@@ -3,7 +3,7 @@ describe("Game", function () {
     var gameState;
 
     beforeEach(function () {
-        gameState = jasmine.createSpyObj('gameState', ['turn', 'next', 'player1', 'join']);
+        gameState = jasmine.createSpyObj('gameState', ['turn', 'next', 'player1', 'join', 'play']);
     });
 
 
@@ -32,7 +32,7 @@ describe("Game", function () {
             gameState.next.and.returnValue('o');
 
             game = tictactoe.Game(gameState);
-            var nextPlayer = game.play();
+            var nextPlayer = game.play(1);
 
             expect(gameState.next).toHaveBeenCalled();
             expect(nextPlayer).toEqual('o');
@@ -40,4 +40,13 @@ describe("Game", function () {
 
 
     })
+
+    describe('play', function(){
+        it('should delegate play to gameState', function(){
+            game = tictactoe.Game(gameState);
+            game.play(1);
+            expect(gameState.play).toHaveBeenCalledWith(1);
+        });
+
+    });
 });

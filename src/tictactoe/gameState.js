@@ -1,14 +1,14 @@
 var tictactoe = tictactoe || {};
 
-tictactoe.GameState = function (players, playerOne, playerTwo) {
-    var currentTurn = players.x;
+tictactoe.GameState = function (playerOne, playerTwo, grid) {
+    var currentTurn = playerOne;
 
     function turn(){
         return currentTurn;
     }
 
     function next(){
-        var nextTurn = (currentTurn == players.x) ? players.o : players.x;
+        var nextTurn = (currentTurn == playerOne) ? playerTwo : playerOne;
         currentTurn = nextTurn;
         return  nextTurn;
     }
@@ -23,10 +23,15 @@ tictactoe.GameState = function (players, playerOne, playerTwo) {
 
     }
 
+    function play(cellNum){
+        grid.setCell(cellNum, currentTurn);
+    }
+
     return {
         turn: turn,
         next: next,
-        join: join
+        join: join,
+        play: play
     }
 }
 

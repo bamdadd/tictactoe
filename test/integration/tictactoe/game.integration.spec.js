@@ -4,11 +4,14 @@ describe('Game', function(){
     var players;
     var playerOne;
     var playerTwo;
+    var grid;
+
     beforeEach(function(){
         players = tictactoe.Players();
         playerOne = tictactoe.Player(players);
         playerTwo = tictactoe.Player(players);
-        gameState = tictactoe.GameState(players,playerOne, playerTwo);
+        grid = tictactoe.Grid();
+        gameState = tictactoe.GameState(playerOne, playerTwo, grid);
         game = tictactoe.Game(gameState);
     })
 
@@ -21,19 +24,31 @@ describe('Game', function(){
         expect(playerTwo.isO()).toBeTruthy;
     }) ;
 
-    it('should set the turn to x when it starts', function(){
-        game.join();
-        game.join();
-        expect(game.turn()).toEqual(players.x);
-    }) ;
+    describe('after both joined', function(){
+        beforeEach(function(){
+            game.join();
+            game.join();
+        });
+
+        it('should set the turn to x when it starts', function () {
+            expect(game.turn()).toEqual(playerOne);
+        });
+
+        it('should set the turn to o after x plays', function(){
+            game.play(1);
+            expect(game.turn()).toEqual(playerTwo);
+        }) ;
+
+        it('should play with a grid number', function(){
+            game.play(1);
+            expect(grid.getCell(1)).toEqual(playerOne);
+        });
+
+    })
 
 
-    it('should set the turn to o after x plays', function(){
-        game.join();
-        game.join();
-        game.play();
-        expect(game.turn()).toEqual(players.o);
-    }) ;
+
+
 
 
 });

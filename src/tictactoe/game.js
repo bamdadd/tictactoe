@@ -3,7 +3,8 @@ var tictactoe = tictactoe || {};
 tictactoe.Game = function (gameState){
 
 
-    function play(){
+    function play(cellNum){
+        gameState.play(cellNum);
         return gameState.next();
     }
 
