@@ -27,7 +27,7 @@ io.sockets.on('connection', function (socket) {
 
     socket.on('join', function (data) {
         players++;
-        socket.emit('joined', {"id": players, "xo": calcXo(players)});
+        socket.emit('joined', {"id": players, "xo": calcXo(players), client_id: socket.id});
     });
 
 

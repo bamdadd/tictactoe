@@ -3,7 +3,22 @@ describe("Game", function () {
     var gameState;
 
     beforeEach(function () {
-       gameState = jasmine.createSpyObj('gameState', ['turn', 'next']);
+       gameState = jasmine.createSpyObj('gameState', ['turn', 'next', 'player1', 'join']);
+    });
+
+    describe('Join', function(){
+       it('should join the first player as X', function(){
+
+           var playerOne = jasmine.createSpy('PlayerOne');
+
+           gameState.join.and.returnValue(playerOne);
+
+           game = tictactoe.Game(gameState);
+
+           var player = game.join();
+           expect(gameState.join).toHaveBeenCalled;
+           expect(player).toEqual(playerOne);
+       }) ;
     });
 
     describe("Turn", function () {

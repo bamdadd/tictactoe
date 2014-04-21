@@ -22,6 +22,7 @@
 
         socket.on('joined', function(player_details){
             console.log('joined successfully!');
+            console.log(player_details.client_id);
             player_id = player_details.id;
             player_xo = player_details.xo;
             $('.pid').text(player_id);

@@ -16,4 +16,5 @@ tictactoe.GameState = function(players){
         next: next
     }
 }
+
 module.exports = tictactoe.GameState;

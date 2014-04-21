@@ -11,5 +11,4 @@ tictactoe.Players = function(){
     }
 }
 
-
 module.exports = tictactoe.Players;

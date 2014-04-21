@@ -6,10 +6,14 @@ tictactoe.Game = function (gameState){
         return gameState.next();
     }
 
+    function join(){
+        return gameState.join();
+    }
+
     return {
         turn: gameState.turn,
-        play: play
+        play: play,
+        join: join
     }
 }
-
 module.exports = tictactoe.Game;
