@@ -1,6 +1,7 @@
 var tictactoe = tictactoe || {};
 
-tictactoe.Game = function (gameState){
+tictactoe.Game = function (gameState, playerOne, playerTwo){
+
 
     function play(){
         return gameState.next();
@@ -11,6 +12,8 @@ tictactoe.Game = function (gameState){
     }
 
     return {
+        playerOne: playerOne,
+        playerTwo: playerTwo,
         turn: gameState.turn,
         play: play,
         join: join
