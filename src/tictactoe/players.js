@@ -7,6 +7,9 @@ tictactoe.Players = function(){
 
     return {
         x: x,
-        o: o,
+        o: o
     }
 }
+
+
+module.exports = tictactoe.Players;

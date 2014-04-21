@@ -12,4 +12,4 @@ tictactoe.Game = function (gameState){
     }
 }
 
-
+module.exports = tictactoe.Game;
