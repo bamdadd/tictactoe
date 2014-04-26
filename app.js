@@ -3,7 +3,12 @@ var tictactoe = require('./src/tictactoe');
 var express = require('express');
 var app = express();
 
+var playerOne = tictactoe.Player(tictactoe.Players);
+var playerTwo = tictactoe.Player(tictactoe.Players);
+var grid = tictactoe.Grid();
+var gameState = tictactoe.GameState(playerOne, playerTwo, grid);
 
+var game= tictactoe.Game(gameState);
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function (req, res) {
