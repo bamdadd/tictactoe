@@ -15,32 +15,33 @@ tictactoe.Grid = function () {
 
     function winner() {
 
-        if (grid[0] == grid[1] && grid[1] == grid [2] && grid[0] != null) {
-            return grid[0];
-        } else if (grid[3] == grid[4] && grid[4] == grid[5] && grid[3] != null) {
-            return grid[3];
-        } else if (grid[6] == grid[7] && grid[7] == grid[8] && grid[6] != null) {
-            return grid[6];
-        } else if (grid[0] == grid[3] && grid[3] == grid[6] && grid[0] != null) {
-            return grid[0];
-        } else if (grid[1] == grid[4] && grid[4] == grid[7] && grid[1] != null) {
-            return grid[1];
-        } else if (grid[2] == grid[5] && grid[5] == grid[8] && grid[2] != null) {
-            return grid[2];
-        } else if (grid[0] == grid[4] && grid[4] == grid[8] && grid[0] != null) {
-            return grid[0];
-        }
-        else if (grid[2] == grid[4] && grid[4] == grid[6] && grid[2] != null) {
-            return grid[2];
-        }
+        var firstRow = checkWinner(0, 1, 2);
+        var secondRow = checkWinner(3, 4, 5);
+        var thirdRow = checkWinner(6, 7, 8);
+        var firstColumn = checkWinner(0, 3, 6);
+        var secondColumn = checkWinner(1, 4, 7);
+        var thirdColumn = checkWinner(2, 5, 8);
+        var diagonalDesc = checkWinner(0, 4, 8);
+        var diagonalAsc = checkWinner(2, 4, 6);
 
-
-        else {
-            return null;
-        }
-
-
+        if (firstRow) return firstRow;
+        if (firstRow) return firstRow;
+        if (secondRow) return secondRow;
+        if (thirdRow) return thirdRow;
+        if (firstColumn) return firstColumn;
+        if (secondColumn) return secondColumn;
+        if (thirdColumn) return thirdColumn;
+        if (diagonalAsc) return diagonalAsc;
+        if (diagonalDesc) return diagonalDesc;
+        return null;
     }
+
+    function checkWinner(c1, c2, c3) {
+        if (grid[c1] == grid[c2] && grid[c2] == grid [c3] && grid[c1] != null) {
+            return grid[c1];
+        }
+        return null;
+    };
 
     return {
         getCell: getCell,
