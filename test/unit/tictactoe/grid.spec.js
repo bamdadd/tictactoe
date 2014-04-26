@@ -87,6 +87,16 @@ describe('Grid', function () {
             grid.setCell(0, p2);
             expect(grid.winner()).toEqual(p1);
         });
+        it('should return winner if the descending diagonal is the same player', function () {
+            grid.setCell(0, p1);
+            expect(grid.winner()).toEqual(null);
+            grid.setCell(1, p2);
+            grid.setCell(4, p1);
+            grid.setCell(5, p2);
+            grid.setCell(8, p1);
+            grid.setCell(3, p2);
+            expect(grid.winner()).toEqual(p1);
+        });
 
 
     });
