@@ -30,6 +30,9 @@ tictactoe.Grid = function () {
         } else if (grid[0] == grid[4] && grid[4] == grid[8] && grid[0] != null) {
             return grid[0];
         }
+        else if (grid[2] == grid[4] && grid[4] == grid[6] && grid[2] != null) {
+            return grid[2];
+        }
 
 
         else {
