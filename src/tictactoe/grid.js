@@ -12,9 +12,22 @@ tictactoe.Grid = function(){
     function setCell(cellNum, player){
         grid[cellNum]= player;
     }
+
+    function winner(){
+
+        if(grid[0] == grid[1] && grid[1] == grid [2]){
+            return grid[0];
+        }
+        else {
+            return null;
+        }
+
+
+    }
     return {
         getCell: getCell,
-        setCell: setCell
+        setCell: setCell,
+        winner: winner
     }
 }
 

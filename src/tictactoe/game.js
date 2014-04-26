@@ -12,10 +12,20 @@ tictactoe.Game = function (gameState){
         return gameState.join();
     }
 
+    function haveWinner(){
+        return gameState.haveWinner();
+    }
+
+    function winner(){
+        return gameState.winner();
+    }
+
     return {
         turn: gameState.turn,
         play: play,
-        join: join
+        join: join,
+        haveWinner: haveWinner,
+        winner: winner
     }
 }
 module.exports = tictactoe.Game;

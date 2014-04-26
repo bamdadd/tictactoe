@@ -3,7 +3,7 @@ describe("Game", function () {
     var gameState;
 
     beforeEach(function () {
-        gameState = jasmine.createSpyObj('gameState', ['turn', 'next', 'player1', 'join', 'play']);
+        gameState = jasmine.createSpyObj('gameState', ['turn', 'next', 'player1', 'join', 'play', 'haveWinner', 'winner']);
     });
 
 
@@ -41,12 +41,37 @@ describe("Game", function () {
 
     })
 
-    describe('play', function(){
-        it('should delegate play to gameState', function(){
+    describe('play', function () {
+        it('should delegate play to gameState', function () {
             game = tictactoe.Game(gameState);
             game.play(1);
             expect(gameState.play).toHaveBeenCalledWith(1);
         });
 
+    });
+
+    describe('Winner', function () {
+        beforeEach(function () {
+            gameState.winner.and.returnValue(null);
+            game = tictactoe.Game(gameState);
+
+        });
+        it('should not have a winner when the game starts', function () {
+            expect(game.haveWinner()).toBeFalsy();
+        });
+
+        it('should set the winner to null when there is no winner', function () {
+            expect(game.winner()).toBeNull();
+        })
+
+        it('should delegate to gameState to find haveWinner', function(){
+            game.haveWinner();
+            expect(gameState.haveWinner).toHaveBeenCalled();
+        });
+
+        it('should delegate to gameState to find winner', function(){
+            game.winner();
+            expect(gameState.winner).toHaveBeenCalled();
+        });
     });
 });

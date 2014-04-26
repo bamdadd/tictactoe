@@ -44,8 +44,18 @@ describe('Game', function(){
             expect(grid.getCell(1)).toEqual(playerOne);
             game.play(2);
             expect(grid.getCell(2)).toEqual(playerTwo);
-
         });
+
+        it('should find the winner', function(){
+            game.play(0);
+            game.play(3);
+            expect(game.haveWinner()).toBeFalsy();
+            game.play(1);
+            game.play(4);
+            game.play(2);
+            expect(game.haveWinner()).toBeTruthy();
+            expect(game.winner()).toEqual(playerOne);
+        })
 
     })
 

@@ -3,10 +3,6 @@ var tictactoe = require('./src/tictactoe');
 var express = require('express');
 var app = express();
 
-var players = tictactoe.Players();
-var gameState = tictactoe.GameState(players);
-var game = tictactoe.Game(gameState);
-
 
 app.use(express.static(__dirname + '/public'));
 
@@ -45,5 +41,4 @@ function calcXo(players){
 
 function calcNextTurn(data) {
     return (data.player_xo == 'x')? 'o': 'x';
-//    return game.next();
 }

@@ -27,11 +27,24 @@ tictactoe.GameState = function (playerOne, playerTwo, grid) {
         grid.setCell(cellNum, currentTurn);
     }
 
+    function haveWinner(){
+        if (grid.winner()){
+            return true;
+        }
+        return false;
+    }
+
+    function winner(){
+        return grid.winner();
+    }
+
     return {
         turn: turn,
         next: next,
         join: join,
-        play: play
+        play: play,
+        haveWinner: haveWinner,
+        winner: winner
     }
 }
 
