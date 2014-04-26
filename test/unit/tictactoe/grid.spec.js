@@ -67,6 +67,17 @@ describe('Grid', function () {
             expect(grid.winner()).toEqual(p1);
         });
 
+        it('should return winner if the second column is the same player', function () {
+            grid.setCell(0, p1);
+            expect(grid.winner()).toEqual(null);
+            grid.setCell(1, p2);
+            grid.setCell(3, p1);
+            grid.setCell(4, p2);
+            grid.setCell(8, p1);
+            grid.setCell(7, p2);
+            expect(grid.winner()).toEqual(p2);
+        });
+
 
     });
 
